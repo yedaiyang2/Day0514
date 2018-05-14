@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.administrator.day514"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        //数据库的schema版本，也可以理解为数据库版本号
+        schemaVersion 1
+        //设置DaoMaster、DaoSession、Dao包名，也就是要放置这些类的包的全路径。
+        daoPackage 'com.example.administrator.day514.gen'
+        //设置DaoMaster、DaoSession、Dao目录
+        targetGenDir 'src/main/java'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    //greendao
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.greenrobot:greendao-generator:3.2.2'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    //黄油刀依赖
+    implementation 'com.jakewharton:butterknife:8.8.0'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.youth.banner:banner:1.4.10'
+    //glide
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    recylerview
+    implementation 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+
+    //fresco--
+    implementation 'com.facebook.fresco:fresco:1.9.0'
+    //gson
+
+    implementation 'com.google.code.gson:gson:2.6.2'
+
+}
